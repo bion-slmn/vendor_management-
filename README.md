@@ -94,13 +94,15 @@ API Endpoints for purchase order:
 Create a purchase order. 
  
 ### GET /api/purchase_orders/?page_size=<any_number>&page=<any_number>&vendor_id=vendor_id 
-    Fetch a paginated list of purchase orders with an option to ﬁlterby vendor and 
-    options to specify the page size and page number 
-    default is page = 1 and page_size=10
-    if no vendor_id is passed, all the puurchase order will be fetched in bacthes of 10
-    ```
+> Fetch a paginated list of purchase orders with an option to ﬁlterby vendor and 
+>  options to specify the page size and page number 
+>    default is page = 1 and page_size=10
+>    if no vendor_id is passed, all the puurchase order will be fetched in bacthes of 10
+
+> Example
+```
     curl  http://localhost:8000/api/purchase_orders/    -H "Content-Type: application/json"   -H "Authorization: Token  3dc4723334deaa24c28863f977b1073462f25aca"
-    ```
+```
 ```  
     Returns data with page information as shown
     {
