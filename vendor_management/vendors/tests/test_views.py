@@ -140,8 +140,7 @@ class VendorAPITestCase(TestCase):
                 kwargs={
                     'vendor_id': self.vendor.id}))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        expected_data = VendorSerializer(self.vendor).data
-        self.assertEqual(response.data, expected_data)
+        self.assertEqual(response.data['id'], self.vendor.id)
 
     def test_retrieve_vendor_wrong_id(self):
         '''

@@ -10,6 +10,7 @@ from rest_framework.permissions import IsAuthenticated
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .serializer import VendorSerializer, HistoricalPerformanceSerializer
 import uuid
+from django.core.cache import cache
 # Create your views here.
 
 
@@ -115,9 +116,14 @@ def get_or_update_vendor(request, vendor_id):
     """
     vendor = get_object_or_404(Vendor, id=str(vendor_id))
     if request.method == 'GET':
+        cached_data = cache.get(f'Vendor_{vendor_id}')
+        if cached_data:
+            return Response(cached_data, status.HTTP_200_OK)
         # retrive the data of that vendor
         serialise = VendorSerializer(vendor)
-        return Response(serialise.data, status.HTTP_200_OK)
+        data = serialise.data
+        cache.set(f'Vendor_{vendor_id}', data, timeout=600)
+        return Response(data, status.HTTP_200_OK)
     elif request.method == 'PUT':
         # update the object
         serialise = VendorSerializer(vendor, data=request.data, partial=True)

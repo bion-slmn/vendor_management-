@@ -11,6 +11,7 @@ from rest_framework.permissions import IsAuthenticated
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .serializer import PurchaseOrderSerializer
 import uuid
+from django.core.cache import cache
 from django.utils import timezone
 
 
@@ -124,10 +125,17 @@ def get_or_update_purchase_order(request, purchase_order_id):
     """
     # rettrive detail of a specified order
     order = get_object_or_404(PurchaseOrder, id=purchase_order_id)
+    cached_data = cache.get(f'PO_{purchase_order_id}')
+    
     if request.method == 'GET':
         # retrive the data of that order
+        if cached_data:
+            return Response(cached_data, status.HTTP_200_OK)
         serialise = PurchaseOrderSerializer(order)
-        return Response(serialise.data, status.HTTP_200_OK)
+        data = serialise.data
+        cache.set(f'PO_{purchase_order_id}', data, timeout=600)
+        print(data)
+        return Response(data, status.HTTP_200_OK)
     elif request.method == 'PUT':
         # update the object
         serialise = PurchaseOrderSerializer(
