@@ -8,7 +8,7 @@ This system will handle vendor proﬁles, track purchase orders, and calculate v
 ### System registration
 User has to regiseter inorder to be given permission to access other API endpoint
 To register as user in the app use the end point
-** POST /api/user/register/ **
+__ POST /api/user/register/ __
 Example
 ```
 curl -X POST localhost:8000/api/user/register/  -H "Content-Type: application/json" -d '{"username": "bon", "password": "firefox123"}' 
@@ -16,7 +16,7 @@ curl -X POST localhost:8000/api/user/register/  -H "Content-Type: application/js
 
 ### Getting Token and Logining in:
 Token is given when the user logs in, user the end point 
-** POST /api/user/login/ **
+__ POST /api/user/login/ __
 ```
 curl -X POST localhost:8000/api/user/login/  -H "Content-Type: application/json" -d '{"username": "bon", "password": "firefox123"}'
 
@@ -30,14 +30,15 @@ curl  http://localhost:8000/api/vendor/    -H "Content-Type: application/json"  
 
 ### Vendor profile management APIS
 
-  ** ● POST /api/vendors/: ** Create a newvendor. 
-  ** ● GET /api/vendors/?page_size=<any_number>&page=<any_number>: ** Fetch a paginated list of vendors,
+  __ ● POST /api/vendors/: __ Create a newvendor. 
+  __ ● GET /api/vendors/?page_size=<any_number>&page=<any_number>: __ Fetch a paginated list of vendors,
    with options to specify the page size and page number.
    default is page = 1 and page_size=10
    ```
    This example returns only the first page and the first 10 vendors
    curl  http://localhost:8000/api/vendor/    -H "Content-Type: application/json"   -H "Authorization: Token  3dc4723334deaa24c28863f977b1073462f25aca"
-
+    ```
+    ```
    Returns data showing information on next page, previous page  as shown below
 
    {
@@ -62,14 +63,14 @@ curl  http://localhost:8000/api/vendor/    -H "Content-Type: application/json"  
 }
 
    ```
-  ** ● GET /api/vendors/{vendor_id}/: ** Retrieve a speciﬁc vendor's details. 
-  ** ● PUT /api/vendors/{vendor_id}/: ** Update a vendor's details. 
-  ** ● DELETE /api/vendors/{vendor_id}/: ** Delete a vendor
+  __ ● GET /api/vendors/{vendor_id}/: __ Retrieve a speciﬁc vendor's details. 
+  __ ● PUT /api/vendors/{vendor_id}/: __ Update a vendor's details. 
+  __ ● DELETE /api/vendors/{vendor_id}/: __ Delete a vendor
 
 ###   Purchase Order Tracking
 ● API Endpoints for purchase order: 
-    ** ● POST /api/purchase_orders/ ** : Create a purchase order. 
-    ** ● GET /api/purchase_orders/?page_size=<any_number>&page=<any_number>&vendor_id=vendor_id ** 
+    __ ● POST /api/purchase_orders/ __ : Create a purchase order. 
+    __ ● GET /api/purchase_orders/?page_size=<any_number>&page=<any_number>&vendor_id=vendor_id __ 
     Fetch a paginated list of purchase orders with an option to ﬁlterby vendor and 
     options to specify the page size and page number 
     default is page = 1 and page_size=10
@@ -138,11 +139,11 @@ curl  http://localhost:8000/api/vendor/    -H "Content-Type: application/json"  
 
     ```
 
-    ** ● GET /api/purchase_orders/{po_id}/ ** Retrieve details of a speciﬁc purchase order. 
-    ** ● PUT /api/purchase_orders/{po_id}/ ** Update a purchase order. 
-    ** ● DELETE /api/purchase_orders/{po_id}/ ** Delete a purchase order.
+    __ ● GET /api/purchase_orders/{po_id}/ __ Retrieve details of a speciﬁc purchase order. 
+    __ ● PUT /api/purchase_orders/{po_id}/ __ Update a purchase order. 
+    __ ● DELETE /api/purchase_orders/{po_id}/ __ Delete a purchase order.
 
 ###  Vendor Performance Endpoint 
-    ** GET /api/vendors/{vendor_id}/performance ** Get the performance metric of a vendor 
+    __ GET /api/vendors/{vendor_id}/performance __ Get the performance metric of a vendor 
 
 ### 
