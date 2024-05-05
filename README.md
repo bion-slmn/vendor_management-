@@ -1,4 +1,6 @@
 # VENDOR MANAGEMENT SYSTEM
+![Untitled-design-9](https://github.com/bion-slmn/vendor_management-/assets/122830539/82824574-89f3-4097-a859-47f5fb2e2a56)
+
 
 This vendor managment system is built with python django and Linux
 This system will handle vendor proﬁles, track purchase orders, and calculate vendor performance metrics
