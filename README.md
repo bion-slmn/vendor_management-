@@ -46,9 +46,10 @@ Returns
 ### POST /api/vendors/: 
   Create a newvendor. 
 ### GET /api/vendors/?page_size=<any_number>&page=<any_number>
-Fetch a paginated list of vendors,
-with options to specify the page size and page number.
+
+Fetch a paginated list of vendors, with options to specify the page size and page number.
 default is page = 1 and page_size=10
+
 
 ```
    This example returns only the first page and the first 10 vendors
