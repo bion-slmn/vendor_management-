@@ -1,9 +1,18 @@
-# VENDDOR MANAGEMENT SYSTEM
+# VENDOR MANAGEMENT SYSTEM
 
 This vendor managment system is built with python django
 This system will handle vendor proﬁles, track purchase orders, and calculate vendor performance metrics
 
 ## USAGE
+### Install required libraries
+```
+pip install -r requirements.txt
+```
+### Start redis server and django server
+```
+sudo service redis-server start
+python3 manage.py runserver
+```
 
 ### System registration
 User has to regiseter inorder to be given permission to access other API endpoint
