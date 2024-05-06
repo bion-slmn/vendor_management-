@@ -50,7 +50,12 @@ def create_or_list_vendor(request):
     """
     # if the request is GET, list all the vendors
     if request.method == 'GET':
-        all_vendors = Vendor.objects.all().order_by('id')
+        cached_data = cache.get('cache_all_vendors')
+        if cached_data:
+            all_vendors = cached_data
+        else:
+            all_vendors = list(Vendor.objects.all().order_by('id'))
+            cache.set('cache_all_vendors', all_vendors, timeout=60)
         try:
             page_number = request.query_params.get('page', 1)
             page_size = request.query_params.get('page_size', 10)
@@ -122,7 +127,7 @@ def get_or_update_vendor(request, vendor_id):
         # retrive the data of that vendor
         serialise = VendorSerializer(vendor)
         data = serialise.data
-        cache.set(f'Vendor_{vendor_id}', data, timeout=600)
+        cache.set(f'Vendor_{vendor_id}', data, timeout=60)
         return Response(data, status.HTTP_200_OK)
     elif request.method == 'PUT':
         # update the object
