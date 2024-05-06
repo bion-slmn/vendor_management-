@@ -47,7 +47,6 @@ class VendorAPITestCase(TestCase):
 
     def test_list_vendors(self):
         response = self.client.get(reverse('create_or_list_vendor'))
-        print(response.data, 11111111)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data.get('data')), 1)
         self.assertEqual(response.data.get('page_size'), 1)
