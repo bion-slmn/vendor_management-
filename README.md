@@ -49,8 +49,7 @@ Returns
 ### GET /api/vendors/?page_size=any_number&page=any_number:
 
 Fetch a paginated list of vendors, with options to specify the page size and page number.
-default is page = 1 and page_size=10. 
-The results are cached for 1 minute,
+By default, the page number is 1 and the page size is 10.
 
 > Example: This example returns only the first page and the first 10 vendors
 
@@ -95,10 +94,8 @@ API Endpoints for purchase order:
 Create a purchase order. 
  
 ### GET /api/purchase_orders/?page_size=<any_number>&page=<any_number>&vendor_id=vendor_id 
-Fetch a paginated list of purchase orders with an option to ﬁlterby vendor and 
-options to specify the page size and page number 
-default is page = 1 and page_size=10
-if no vendor_id is passed, all the puurchase order will be fetched in bacthes of 10
+Fetch a paginated list of purchase orders. You can optionally filter them by vendor and specify the page size and page number. By default, the page number is 1 and the page size is 10. If no vendor ID is provided, all purchase orders will be retrieved in batches of 10.
+The purchase orders are ordered by the id equivaluent to date creation
 
 > Example
 ```
