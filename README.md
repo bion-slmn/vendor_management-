@@ -83,7 +83,7 @@ The results are cached for 1 minute,
 
 ```
 ### GET /api/vendors/{vendor_id}/: 
-  Retrieve a speciﬁc vendor's details. 
+  Retrieve a speciﬁc vendor's details.  The data is cached for 1 minute
 ### PUT /api/vendors/{vendor_id}/: 
    Update a vendor's details. 
 ###  DELETE /api/vendors/{vendor_id}/: 
@@ -167,7 +167,7 @@ curl  http://localhost:8000/api/purchase_orders/ -H "Content-Type: application/j
 ```
 
 ### GET /api/purchase_orders/{po_id}/ 
- Retrieve details of a speciﬁc purchase order. 
+ Retrieve details of a speciﬁc purchase order. The data is cached for 1 minute
 ### PUT /api/purchase_orders/{po_id}/ 
   Update a purchase order. 
 ###  DELETE /api/purchase_orders/{po_id}/ 

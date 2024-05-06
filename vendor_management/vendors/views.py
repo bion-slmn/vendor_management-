@@ -50,12 +50,8 @@ def create_or_list_vendor(request):
     """
     # if the request is GET, list all the vendors
     if request.method == 'GET':
-        cached_data = cache.get('cache_all_vendors')
-        if cached_data:
-            all_vendors = cached_data
-        else:
-            all_vendors = list(Vendor.objects.all().order_by('id'))
-            cache.set('cache_all_vendors', all_vendors, timeout=60)
+        all_vendors = Vendor.objects.all().order_by('id')
+    
         try:
             page_number = request.query_params.get('page', 1)
             page_size = request.query_params.get('page_size', 10)
